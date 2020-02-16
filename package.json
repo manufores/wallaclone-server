@@ -1,7 +1,7 @@
 {
-  "name": "merntaskservidor",
+  "name": "wallacloneservidor",
   "version": "1.0.0",
-  "description": "MERN API para MERN TASKS",
+  "description": "API para WallaClone",
   "main": "index.js",
   "scripts": {
     "start": "node .",
