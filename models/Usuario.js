@@ -20,6 +20,12 @@ const UsuariosSchema = mongoose.Schema({
     registro: {
         type: Date,
         default: Date.now()
+    },
+    token: {
+        type: String
+    },
+    expiracion: {
+        type: Date
     }
 });
 

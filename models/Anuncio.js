@@ -28,6 +28,11 @@ const AnuncioSchema = mongoose.Schema({
         required: false,
         trim: true
     },
+    fotopath: {
+        type: String,
+        required: false,
+        trim: true
+    },
 
     tags: {
         type: Array,

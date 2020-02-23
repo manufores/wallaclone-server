@@ -55,7 +55,6 @@ exports.obtenerAnuncios = async (req, res) => {
 
         const anuncios = await Anuncio.list({ filter: filter, start, limit, fields, sort });
 
-        // const anuncios = await Anuncio.find();
         res.json({ anuncios });
     } catch (error) {
         console.log(error);
