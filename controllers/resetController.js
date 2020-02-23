@@ -30,7 +30,8 @@ exports.resetearPass = async (req, res) => {
         await usuario.save();
 
         // url de reset
-        const resetUrl = `http://localhost:4000/api/reset/${usuario.token}`;
+        const resetUrl = `http://${req.headers.host}/api/reset/${usuario.token}`;
+        // `http://localhost:4000/api/reset/${usuario.token}`
 
         // Enviar el correo con el Token
         await enviarEmail.enviar({
@@ -56,7 +57,8 @@ exports.verificarToken = async (req, res) => {
     if(!usuario) {
         return res.status(400).json({msg: 'Acción no válida'});
     }
-    res.redirect(`http://localhost:3000/newpassword/${token}`);
+    res.redirect(`http://${process.env.FRONT_URL}/newpassword/${token}`);
+    // `http://localhost:3000/newpassword/${token}`
 }
 
 // Verifica el token válido pero también la de fecha de expiración
@@ -69,7 +71,8 @@ exports.actualizarPassword = async (req, res) => {
 
     // verificamos si el usuario existe
     if(!usuario){
-        res.redirect(`http://localhost:3000/reset-pass`);
+        res.redirect(`http://${process.env.FRONT_URL}/reset-pass`);
+        // `http://localhost:3000/reset-pass`
     }
 
     // Hashear el password

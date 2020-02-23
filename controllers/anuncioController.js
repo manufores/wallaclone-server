@@ -115,12 +115,14 @@ exports.eliminarAnuncio = async (req, res) => {
     if (anuncio.creador.toString() !== req.usuario.id) {
       return res.status(401).json({ msg: "No Autorizado" });
     }
-
-    fs.unlink(anuncio.fotopath, function(err) {
-      if (err) throw err;
     
-      console.log('file deleted');
-    });
+    if(anuncio.fotopath !== ''){
+      fs.unlink(anuncio.fotopath, function(err) {
+        if (err) throw err;
+      
+        console.log('file deleted');
+      });
+    }
 
     // Eliminar el Anuncio
     await Anuncio.findOneAndRemove({ _id: req.params.id });
