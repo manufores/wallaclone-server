@@ -116,7 +116,7 @@ exports.eliminarAnuncio = async (req, res) => {
       return res.status(401).json({ msg: "No Autorizado" });
     }
     
-    if(anuncio.fotopath !== ''){
+    if(anuncio.foto !== ''){
       fs.unlink(anuncio.fotopath, function(err) {
         if (err) throw err;
       

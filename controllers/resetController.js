@@ -67,7 +67,7 @@ exports.actualizarPassword = async (req, res) => {
     // const token = req.params.token;
     const usuario = await Usuario.findOne({ token, expiracion:{$gte: Date.now()} });
 
-    console.log(usuario);
+    // console.log(usuario);
 
     // verificamos si el usuario existe
     if(!usuario){
@@ -78,9 +78,10 @@ exports.actualizarPassword = async (req, res) => {
     // Hashear el password
     const salt = await bcryptjs.genSalt(10);
     usuario.password = await bcryptjs.hash(req.body.password, salt );
+    
     // Limpiamos el token y la fecha de expiracion de la BBDD
-    // usuario.token=null;
-    // usuario.expiracion=null;
+    usuario.token=null;
+    usuario.expiracion=null;
 
     await usuario.save();
     
