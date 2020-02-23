@@ -20,7 +20,6 @@ exports.crearAnuncio = async (req, res) => {
 
     // Guardar el creador via JWT
     anuncio.creador = req.usuario.id;
-    console.log(req.file)
     if (req.body.image !== "") {
       const path = req.file.path;
       const image = req.file.filename;
